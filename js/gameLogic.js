@@ -10,10 +10,6 @@ const Game = {
 
     currentPsychicId: 1,
 
-    init: function () {
-        console.log("Game logic initialized.");
-    },
-
     startNewGame: function () {
         App.gameConfig.players.forEach(p => p.score = 0);
         this.roundCounter = 0;
@@ -67,14 +63,10 @@ const Game = {
         this.gameState = 'REVEAL';
 
         gameView.updateRevealDisplay(points);
-
-        console.log(`Guess submitted. Target was ${this.currentTargetAngle}. Scored ${points} points.`);
     },
 
     backToSetup: function () {
         this.gameState = 'IDLE';
-        const finalScores = App.gameConfig.players.map(p => `${p.name}: ${p.score}`).join(', ');
-        alert(`Powrót do menu. Ostatnie wyniki: ${finalScores}`);
         App.navigateToSetup();
     },
 
@@ -91,5 +83,3 @@ const Game = {
         return 0;
     }
 };
-
-Game.init();

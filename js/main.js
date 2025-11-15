@@ -27,7 +27,6 @@ const App = {
 
         this.views[viewName].classList.remove('hidden');
         this.currentView = viewName;
-        console.log(`Showing view: ${viewName}`);
     },
 
     navigateToSetup: function () { App.showView('setup'); },
