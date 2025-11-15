@@ -20,12 +20,22 @@ const Dial = {
         this.dialContainer.innerHTML = '';
 
         const segmentClasses = ['score-2', 'score-3', 'score-4', 'score-3', 'score-2'];
+        const segmentScores = [2, 3, 4, 3, 2];
         const segmentOffsets = [-20, -10, 0, 10, 20];
 
         segmentClasses.forEach((cls, i) => {
             const segment = document.createElement('div');
             segment.classList.add('target-segment', cls);
             segment.dataset.offset = segmentOffsets[i];
+
+            const scoreLabel = document.createElement('span');
+            scoreLabel.classList.add('score-label');
+            scoreLabel.textContent = segmentScores[i];
+
+            const labelRotation = -segmentOffsets[i];
+            scoreLabel.style.transform = `translateX(-50%) rotate(${labelRotation}deg)`;
+
+            segment.appendChild(scoreLabel);
 
             this.dialContainer.prepend(segment);
             this.targetSegments.push(segment);
@@ -68,6 +78,11 @@ const Dial = {
             const finalRotation = baseRotation + offset;
 
             segment.style.transform = `translateX(-50%) translateY(-190px) rotate(${finalRotation}deg)`;
+
+            const scoreLabel = segment.querySelector('.score-label');
+            if (scoreLabel) {
+                scoreLabel.style.transform = `rotate(${-finalRotation}deg)`;
+            }
         });
     },
 
