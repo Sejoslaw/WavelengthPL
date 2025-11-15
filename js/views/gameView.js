@@ -50,6 +50,7 @@ const gameView = {
         `;
 
         Dial.init('main-dial-container');
+
         this.getReferences();
         this.addEventListeners();
         this.updateDisplay();
