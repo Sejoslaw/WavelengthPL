@@ -107,19 +107,6 @@
     text-align: right;
 }
 
-/* USUNIĘTO: .dial-labels (był to kontener dla 0%, 50%, 100%) */
-/*
-.dial-labels {
-    display: flex;
-    justify-content: space-between;
-    width: 90vw;
-    max-width: 400px;
-    margin: 5px auto 0 auto;
-    font-size: 0.8em;
-    color: var(--gray-light);
-}
-*/
-
 
 /* --- OBSZAR CELU (TARGET) --- */
 #target-area {
@@ -132,23 +119,13 @@
     border-radius: 50%;
     transform-origin: 50% 100%;
 
-    /* Gradient stożkowy dla stref punktowych */
     background: conic-gradient(transparent 0deg,
             transparent 45deg,
-            #a5d6a7 45deg,
-            /* 2 pkt */
-            #66bb6a 60deg,
-            /* 3 pkt */
-            var(--green-color) 75deg,
-            /* 4 pkt (Bullseye) */
-            var(--green-color) 105deg,
-            /* 4 pkt */
-            #66bb6a 120deg,
-            /* 3 pkt */
-            #a5d6a7 135deg,
-            /* 2 pkt */
+            #66bb6a 45deg,
+            #66bb6a 135deg,
             transparent 135deg,
             transparent 180deg);
+
     transition: opacity 0.3s ease;
     opacity: 0;
 }
