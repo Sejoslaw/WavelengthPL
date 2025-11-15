@@ -130,7 +130,7 @@ const gameView = {
             this.revealControls.classList.add('hidden');
 
             Dial.setTarget(Game.currentTargetAngle);
-            Dial.setTargetVisibility(true);
+            Dial.setTargetVisibility(false);
             Dial.updatePointer(0);
         }
         else if (Game.gameState === 'GUESSING') {
