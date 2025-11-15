@@ -98,8 +98,8 @@
     top: 50%;
     transform-origin: bottom center;
     border-top: 294px solid transparent;
-    border-left: 23px solid transparent;
-    border-right: 23px solid transparent;
+    border-left: 30px solid transparent;
+    border-right: 30px solid transparent;
     transition: opacity 0.3s ease, border-top-color 0.1s ease;
     opacity: 0;
     z-index: 50;
