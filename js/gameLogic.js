@@ -8,7 +8,7 @@ const Game = {
     currentPointerAngle: 0,
     gameState: 'IDLE', // IDLE, PSYCHIC_CLUE, GUESSING, REVEAL, GAME_OVER
 
-    currentPsychicId: null,
+    currentPsychicId: 1,
 
     init: function () {
         console.log("Game logic initialized.");
