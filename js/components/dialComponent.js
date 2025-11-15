@@ -61,7 +61,7 @@ const Dial = {
         const centerX = rect.left + rect.width / 2;
         const centerY = rect.bottom;
 
-        const deltaX = x - centerX;
+        const deltaX = centerX - x;
         const deltaY = centerY - y;
 
         let angleRad = Math.atan2(deltaY, deltaX);
