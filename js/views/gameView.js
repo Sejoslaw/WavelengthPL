@@ -44,6 +44,10 @@ const gameView = {
                          <button class="btn btn-primary" id="next-round-btn">NASTĘPNA RUNDA</button>
                          <button class="btn btn-secondary" id="exit-game-btn">WRÓĆ DO MENU</button>
                     </div>
+
+                    <div id="show-hide-segments">
+                        <button class="btn btn-primary" id="show-hide-segments-btn">POKAŻ / UKRYJ SEGMENTY</button>
+                    </div>
                 </div>
             </div>
         `;
@@ -84,6 +88,11 @@ const gameView = {
 
         document.getElementById('exit-game-btn').addEventListener('click', () => {
             Game.backToSetup();
+        });
+
+        document.getElementById('show-hide-segments-btn').addEventListener('click', () => {
+            const visible = Dial.targetSegments[0].style.opacity == 0;
+            Dial.setTargetVisibility(!!visible);
         });
     },
 
