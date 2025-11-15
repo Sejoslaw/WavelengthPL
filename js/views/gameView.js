@@ -113,7 +113,7 @@ const gameView = {
         this.spectrumRightEl.textContent = Game.currentSpectrum ? Game.currentSpectrum[1] : 'PRAWA';
 
         if (Game.gameState === 'PSYCHIC_CLUE') {
-            this.instructionsEl.textContent = `Runda ${Game.roundCounter}: ${psychic.name} (Psychik), podaj podpowiedź ustnie. (Widzisz Cel)`;
+            this.instructionsEl.textContent = `Runda ${Game.roundCounter}: ${psychic.name}, podaj podpowiedź ustnie. (Widzisz Cel)`;
             this.clueDisplayEl.textContent = 'Kliknij "Podaj ustną podpowiedź" po jej udzieleniu.';
 
             this.psychicControls.classList.remove('hidden');
@@ -125,8 +125,8 @@ const gameView = {
             Dial.updatePointer(90);
         }
         else if (Game.gameState === 'GUESSING') {
-            this.instructionsEl.textContent = `Runda ${Game.roundCounter}: ${guesser.name} (Zgadywacz), ustaw wskaźnik. (Cel ukryty)`;
-            this.clueDisplayEl.textContent = `Podpowiedź od ${psychic.name} (ustna).`;
+            this.instructionsEl.textContent = `Runda ${Game.roundCounter}: ${guesser.name}, ustaw wskaźnik. (Cel ukryty)`;
+            this.clueDisplayEl.textContent = `Podpowiedź od ${psychic.name}.`;
 
             this.psychicControls.classList.add('hidden');
             this.guesserControls.classList.remove('hidden');
@@ -148,15 +148,15 @@ const gameView = {
             this.playerScore1El.classList.remove('guesser');
             this.playerScore2El.classList.remove('psychic');
             this.playerScore2El.classList.add('guesser');
-            this.playerScore1El.querySelector('.player-role-name').textContent = `${p1.name} (P)`;
-            this.playerScore2El.querySelector('.player-role-name').textContent = `${p2.name} (Z)`;
+            this.playerScore1El.querySelector('.player-role-name').textContent = `${p1.name}`;
+            this.playerScore2El.querySelector('.player-role-name').textContent = `${p2.name}`;
         } else {
             this.playerScore2El.classList.add('psychic');
             this.playerScore2El.classList.remove('guesser');
             this.playerScore1El.classList.remove('psychic');
             this.playerScore1El.classList.add('guesser');
-            this.playerScore2El.querySelector('.player-role-name').textContent = `${p2.name} (P)`;
-            this.playerScore1El.querySelector('.player-role-name').textContent = `${p1.name} (Z)`;
+            this.playerScore2El.querySelector('.player-role-name').textContent = `${p2.name}`;
+            this.playerScore1El.querySelector('.player-role-name').textContent = `${p1.name}`;
         }
     }
 };

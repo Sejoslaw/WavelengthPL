@@ -5,8 +5,7 @@ const setupView = {
     handleNameEdit: function (event) {
         const playerNameEl = event.currentTarget;
         const slot = playerNameEl.dataset.slot;
-        const role = playerNameEl.textContent.match(/\((.*?)\)/)?.[1] || '';
-        const currentName = playerNameEl.textContent.replace(/\s*\(.*\)/, '').trim();
+        const currentName = playerNameEl.textContent.trim();
 
         const inputField = document.createElement('input');
         inputField.type = 'text';
@@ -27,7 +26,7 @@ const setupView = {
 
             const newSpan = document.createElement('span');
             newSpan.className = 'player-name';
-            newSpan.textContent = newName + (role ? ` (${role})` : '');
+            newSpan.textContent = newName;
             newSpan.dataset.slot = slot;
             newSpan.addEventListener('click', setupView.handleNameEdit);
 
@@ -55,11 +54,11 @@ const setupView = {
                 <div class="player-list">
                     <div class="player-slot active">
                         <span class="player-avatar">${player1.name.charAt(0).toUpperCase()}</span>
-                        <span class="player-name" data-slot="${player1.id}">${player1.name} (Psychik)</span>
+                        <span class="player-name" data-slot="${player1.id}">${player1.name}</span>
                     </div>
                     <div class="player-slot active">
                         <span class="player-avatar">${player2.name.charAt(0).toUpperCase()}</span>
-                        <span class="player-name" data-slot="${player2.id}">${player2.name} (Zgadywacz)</span>
+                        <span class="player-name" data-slot="${player2.id}">${player2.name}</span>
                     </div>
                 </div>
                 
