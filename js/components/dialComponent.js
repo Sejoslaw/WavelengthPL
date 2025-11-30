@@ -19,20 +19,16 @@ const Dial = {
         this.targetSegments = [];
         this.dialContainer.innerHTML = '';
 
-        const segmentClasses = ['score-2', 'score-3', 'score-4', 'score-3', 'score-2'];
-        const segmentScores = [2, 3, 4, 3, 2];
-        const segmentOffsets = [-12, -6, 0, 6, 12];
-
-        segmentClasses.forEach((cls, i) => {
+        SEGMENT_CLASSES.forEach((cls, i) => {
             const segment = document.createElement('div');
             segment.classList.add('target-segment', cls);
-            segment.dataset.offset = segmentOffsets[i];
+            segment.dataset.offset = SEGMENT_OFFSETS[i];
 
             const scoreLabel = document.createElement('span');
             scoreLabel.classList.add('score-label');
-            scoreLabel.textContent = segmentScores[i];
+            scoreLabel.textContent = SEGMENT_SCORES[i];
 
-            const labelRotation = -segmentOffsets[i];
+            const labelRotation = -SEGMENT_OFFSETS[i];
             scoreLabel.style.transform = `translateX(-50%) rotate(${labelRotation}deg)`;
 
             segment.appendChild(scoreLabel);
@@ -87,6 +83,16 @@ const Dial = {
     },
 
     setTargetVisibility: function (visible) {
+        if (!visible) {
+            this.targetSegments.forEach(segment => {
+                segment.getElementsByClassName("score-label")[0].innerHTML = "";
+            });
+        } else {
+            for (const [index, segment] of this.targetSegments.entries()) {
+                segment.getElementsByClassName("score-label")[0].innerHTML = SEGMENT_SCORES[index].toString();
+            }
+        }
+
         this.targetSegments.forEach(segment => {
             segment.style.opacity = visible ? '1' : '0';
         });
