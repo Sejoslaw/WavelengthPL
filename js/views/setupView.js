@@ -7,9 +7,9 @@ const setupView = {
         const slot = playerNameEl.dataset.slot;
         const currentName = playerNameEl.textContent.trim();
 
-        const inputField = document.createElement('input');
-        inputField.type = 'text';
-        inputField.className = 'player-name-edit';
+        const inputField = document.createElement(CONSTANTS.Element.Input);
+        inputField.type = CONSTANTS.ElementType.Text;
+        inputField.className = CONSTANTS.Class.PlayerNameEdit;
         inputField.value = currentName;
         inputField.maxLength = 15;
 
@@ -24,18 +24,18 @@ const setupView = {
                 App.gameConfig.players[playerIndex].name = newName;
             }
 
-            const newSpan = document.createElement('span');
-            newSpan.className = 'player-name';
+            const newSpan = document.createElement(CONSTANTS.Element.Span);
+            newSpan.className = CONSTANTS.Class.PlayerName;
             newSpan.textContent = newName;
             newSpan.dataset.slot = slot;
-            newSpan.addEventListener('click', setupView.handleNameEdit);
+            newSpan.addEventListener(CONSTANTS.EventListener.Click, setupView.handleNameEdit);
 
             inputField.replaceWith(newSpan);
         };
 
-        inputField.addEventListener('blur', finalizeEdit);
-        inputField.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') {
+        inputField.addEventListener(CONSTANTS.EventListener.Blur, finalizeEdit);
+        inputField.addEventListener(CONSTANTS.EventListener.KeyPress, (e) => {
+            if (e.key === CONSTANTS.Key.Enter) {
                 finalizeEdit();
             }
         });
@@ -63,13 +63,13 @@ const setupView = {
         `;
         this.addEventListeners();
 
-        document.querySelectorAll('.player-name').forEach(nameEl => {
+        document.querySelectorAll(`.${CONSTANTS.Class.PlayerName}`).forEach(nameEl => {
             nameEl.addEventListener('click', this.handleNameEdit);
         });
     },
 
     addEventListeners: function () {
-        document.getElementById('start-game-btn').addEventListener('click', () => {
+        document.getElementById('start-game-btn').addEventListener(CONSTANTS.EventListener.Click, () => {
             App.navigateToGame();
         });
     }

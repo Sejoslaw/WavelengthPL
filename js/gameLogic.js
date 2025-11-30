@@ -6,7 +6,7 @@ const Game = {
     currentTargetAngle: 0,
     currentClue: '',
     currentPointerAngle: 0,
-    gameState: 'IDLE', // IDLE, PSYCHIC_CLUE, GUESSING, REVEAL, GAME_OVER
+    gameState: CONSTANTS.State.Idle,
     currentPsychicId: 1,
 
     startNewGame: function () {
@@ -15,7 +15,7 @@ const Game = {
 
         this.currentPsychicId = App.gameConfig.players[1].id;
 
-        this.gameState = 'PSYCHIC_CLUE';
+        this.gameState = CONSTANTS.State.PsychicClue;
         this.startNewRound();
     },
 
@@ -33,8 +33,8 @@ const Game = {
 
         this.currentSpectrum = getRandomSpectrum();
         this.currentTargetAngle = this.getRandomTargetAngle();
-        this.currentClue = 'USTNIE';
-        this.gameState = 'PSYCHIC_CLUE';
+        this.currentClue = CONSTANTS.Clue.Ustnie;
+        this.gameState = CONSTANTS.State.PsychicClue;
 
         Dial.updatePointer(0);
 
@@ -42,15 +42,15 @@ const Game = {
     },
 
     submitClue: function (clue) {
-        if (this.gameState !== 'PSYCHIC_CLUE') return;
+        if (this.gameState !== CONSTANTS.State.PsychicClue) return;
         this.currentClue = clue.trim();
 
-        this.gameState = 'GUESSING';
+        this.gameState = CONSTANTS.State.Guessing;
         gameView.updateDisplay();
     },
 
     submitGuess: function (pointerAngle) {
-        if (this.gameState !== 'GUESSING') return;
+        if (this.gameState !== CONSTANTS.State.Guessing) return;
 
         const points = this.calculateScore(this.currentTargetAngle, pointerAngle);
 
@@ -59,13 +59,13 @@ const Game = {
             psychic.score += points;
         }
 
-        this.gameState = 'REVEAL';
+        this.gameState = CONSTANTS.State.Reveal;
 
         gameView.updateRevealDisplay(points);
     },
 
     backToSetup: function () {
-        this.gameState = 'IDLE';
+        this.gameState = CONSTANTS.State.Idle;
         App.navigateToSetup();
     },
 

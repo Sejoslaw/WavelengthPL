@@ -2,8 +2,8 @@
 
 const App = {
     views: {
-        setup: document.getElementById('setup-view'),
-        game: document.getElementById('game-view'),
+        setup: document.getElementById(CONSTANTS.View.Setup),
+        game: document.getElementById(CONSTANTS.View.Game),
     },
 
     currentView: null,
@@ -22,15 +22,21 @@ const App = {
         }
 
         for (let key in this.views) {
-            this.views[key].classList.add('hidden');
+            this.views[key].classList.add(CONSTANTS.Class.Hidden);
         }
 
-        this.views[viewName].classList.remove('hidden');
+        this.views[viewName].classList.remove(CONSTANTS.Class.Hidden);
         this.currentView = viewName;
     },
 
-    navigateToSetup: function () { App.showView('setup'); },
-    navigateToGame: function () { App.showView('game'); Game.startNewGame(); },
+    navigateToSetup: function () {
+        App.showView('setup');
+    },
+
+    navigateToGame: function () {
+        App.showView('game'); 
+        Game.startNewGame();
+    },
 
     gameConfig: {
         players: [
