@@ -4213,7 +4213,8 @@ const SPECTRUMS_DATA = [
     ["Krótki romans", "Długi związek"]
 ];
 
+const SPECTRUM_DATA_RANDOM_PICKER = new RandomPicker(SPECTRUMS_DATA);
+
 function getRandomSpectrum() {
-    const randomIndex = Math.floor(Math.random() * SPECTRUMS_DATA.length);
-    return SPECTRUMS_DATA[randomIndex];
+    return SPECTRUM_DATA_RANDOM_PICKER.pickRandom();
 }
